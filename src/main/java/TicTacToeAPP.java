@@ -1,38 +1,27 @@
-import java.util.Random;
+import java.util.Scanner;
 
 public class TicTacToeAPP {
 
-    static boolean isHumanTurn;
-    static char humanSymbol;
-    static char computerSymbol;
-
+    /**
+     * Entry point of the program.
+     * Reads slot input and prints it back.
+     */
     public static void main(String[] args) {
-        tossAndAssignSymbols();
-        displayTossResult();
+        int slot = getUserSlot();
+        System.out.println("Slot entered: " + slot);
     }
 
-    static void tossAndAssignSymbols() {
-        Random random = new Random();
-
-        int tossResult = random.nextInt(2); // 0 or 1
-        if (tossResult == 0) {
-            isHumanTurn = false;
-            computerSymbol = 'X';
-            humanSymbol = 'O';
-        } else {
-            isHumanTurn = true;
-            humanSymbol = 'X';
-            computerSymbol = 'O';
-        }
-    }
-
-    static void displayTossResult() {
-        if (isHumanTurn) {
-            System.out.println("Human won the toss and will play first.");
-            System.out.println("Human is '" + humanSymbol + "', Computer is '" + computerSymbol + "'");
-        } else {
-            System.out.println("Computer won the toss and will play first.");
-            System.out.println("Computer is '" + computerSymbol + "', Human is '" + humanSymbol + "'");
-        }
+    /**
+     * Reads an integer slot value from the user.
+     * Input: Scanner object
+     * Output: Slot number (1–9)
+     * Note: Validation will be added in later use cases.
+     */
+    static int getUserSlot() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a slot number (1–9): ");
+        int slot = scanner.nextInt();
+        scanner.close();
+        return slot;
     }
 }
